@@ -10,8 +10,7 @@
     "release": "node ./scripts/release.mjs",
     "prettier": "prettier --write src docs-website/src",
     "flow": "flow check --color always",
-    "eslint": "eslint ./src -c ./.eslintrc.js --cache --cache-location ./.cache/.eslintcache",
-    "tslint": "tslint --project .",
+    "eslint": "eslint ./src -c ./.eslintrc.js --cache --cache-location ./.cache/.eslintcache",    
     "test": "jest --config=./jest.config.js --forceExit",
     "ci": "yarn ci:check",
     "ci:check": "concurrently -n jest,eslint,flow,ts 'npm run test' 'npm run eslint' 'npm run flow' 'npm run test:typescript' --kill-others-on-fail",
@@ -163,9 +162,7 @@
     "react-native-windows": "0.71.28",
     "react-test-renderer": "18.2.0",
     "rimraf": "^4.1.2",
-    "semver": "^7.3.8",
-    "tslint": "^5.11.0",
-    "tslint-config-prettier": "^1.15.0",
+    "semver": "^7.3.8",    
     "typescript": "^4.5.0"
   }
 }
