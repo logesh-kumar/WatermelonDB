@@ -20,11 +20,13 @@ jobs:
           path: 'node_modules'
           key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
       - run: yarn
+      - run: yarn eslint 
       - run: yarn ci:check
       - name: Gradle Wrapper Validation
         uses: gradle/wrapper-validation-action@v1.0.6
       - name: Check docs build
         run: cd docs-website && yarn install && cd .. && yarn docs:build
+
   ios:
     runs-on: macos-11
     name: iOS tests
@@ -46,6 +48,7 @@ jobs:
           path: 'node_modules'
           key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
       - run: yarn
+      - run: yarn eslint
       - name: cache Pods
         uses: actions/cache@v3
         id: pods-cache
@@ -58,6 +61,7 @@ jobs:
         run: yarn cocoapods
       - run: yarn test:ios
       - run: yarn swiftlint
+
   android:
     # https://github.com/ReactiveCircus/android-emulator-runner/issues/46
     runs-on: macos-11
@@ -77,6 +81,7 @@ jobs:
           path: 'node_modules'
           key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
       - run: yarn
+      - run: yarn eslint # Added ESLint linting here
       - run: yarn dev:native &
       # See: https://github.com/android/compose-samples/actions/runs/27015993/workflow for ideas for caching
       - name: run tests
@@ -86,6 +91,7 @@ jobs:
           working-directory: ./native/androidTest
           script: ./gradlew connectedAndroidTest
       - run: yarn ktlint
+
   windows:
     runs-on: windows-2022
     name: Windows tests
