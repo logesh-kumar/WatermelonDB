@@ -1,5 +1,4 @@
-// tslint:disable: max-classes-per-file
-import { Database, Model, Q, Query, Relation } from '@nozbe/watermelondb'
+import { Database, Model, Q, Query, Relation } from '@nozbe/watermelondb/index'
 import { action, children, field, lazy, relation, text } from '@nozbe/watermelondb/decorators'
 import { addColumns, schemaMigrations } from '@nozbe/watermelondb/Schema/migrations'
 import { setGenerator } from '@nozbe/watermelondb/utils/common/randomId'
